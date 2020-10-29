@@ -1,0 +1,89 @@
+﻿@model domain.Models.user
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.useremail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.useremail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userpass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userpass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userphone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userphone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skype_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skype_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.domain)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.domain)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Daily_pages_views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Daily_pages_views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.role.rolename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role.rolename)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

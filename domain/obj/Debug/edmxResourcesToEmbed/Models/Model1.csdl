@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="domainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="roleid" />
+    </Key>
+    <Property Name="roleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rolename" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="users" Relationship="Self.FK__users__role_id__4D94879B" FromRole="roles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="useremail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="userpass" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="role_id" Type="Int32" />
+    <Property Name="userphone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="skype_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="domain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Daily_pages_views" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="role" Relationship="Self.FK__users__role_id__4D94879B" FromRole="users" ToRole="roles" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ecode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="domain_u" Relationship="domainModel.FK__domain_u__domain__3A81B327" FromRole="user" ToRole="domain_u" />
+  </EntityType>
+  <Association Name="FK__users__role_id__4D94879B">
+    <End Role="roles" Type="Self.role" Multiplicity="0..1" />
+    <End Role="users" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="roleid" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="domainEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK__users__role_id__4D94879B" Association="Self.FK__users__role_id__4D94879B">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <EntitySet Name="supports" EntityType="domainModel.support" />
+    <EntitySet Name="adsfiles" EntityType="domainModel.adsfile" />
+    <EntitySet Name="domain_u" EntityType="domainModel.domain_u" />
+    <AssociationSet Name="FK__domain_u__domain__3A81B327" Association="domainModel.FK__domain_u__domain__3A81B327">
+      <End Role="user" EntitySet="users" />
+      <End Role="domain_u" EntitySet="domain_u" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="support">
+    <Key>
+      <PropertyRef Name="sid" />
+    </Key>
+    <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ssubject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="smessage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="sfile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="susername" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="suseremail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="adsfile">
+    <Key>
+      <PropertyRef Name="aid" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="filename" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ausername" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="aemail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="astatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="domain_u">
+    <Key>
+      <PropertyRef Name="domain_id" />
+    </Key>
+    <Property Name="domain_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="domain_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="domain_user" Type="Int32" />
+    <Property Name="domain_status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="user" Relationship="domainModel.FK__domain_u__domain__3A81B327" FromRole="domain_u" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__domain_u__domain__3A81B327">
+    <End Type="domainModel.user" Role="user" Multiplicity="0..1" />
+    <End Type="domainModel.domain_u" Role="domain_u" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="domain_u">
+        <PropertyRef Name="domain_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

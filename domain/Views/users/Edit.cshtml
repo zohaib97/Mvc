@@ -1,0 +1,115 @@
+﻿@model domain.Models.user
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Users</h6>
+
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+
+        <div class="col-12 order-xl-1">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Update</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="@Url.Action("Edit","users")">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.userid)
+                        <div class="pl-lg-4">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="username">Full  Name</label>
+                                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">Email</label>
+                                        @Html.EditorFor(model => model.useremail, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+                                        @Html.ValidationMessageFor(model => model.useremail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="userpass">Password</label>
+                                        @Html.EditorFor(model => model.userpass, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.userpass, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="role_id">Role</label>
+                                        @Html.DropDownList("role_id", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.role_id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="userphone">Contact</label>
+                                        @Html.EditorFor(model => model.userphone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.userphone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Update" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <a href="@Url.Action("Index","users")" class="btn btn-sm btn-dark">Back To Index</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

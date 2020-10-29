@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="domainModelStoreContainer" CdmEntityContainer="domainEntities">
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="domainModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="rolename" ColumnName="rolename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="domainModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="ecode" ColumnName="ecode" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="useremail" ColumnName="useremail" />
+          <ScalarProperty Name="userpass" ColumnName="userpass" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="userphone" ColumnName="userphone" />
+          <ScalarProperty Name="skype_id" ColumnName="skype_id" />
+          <ScalarProperty Name="domain" ColumnName="domain" />
+          <ScalarProperty Name="Daily_pages_views" ColumnName="Daily_pages_views" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="supports">
+      <EntityTypeMapping TypeName="domainModel.support">
+        <MappingFragment StoreEntitySet="support">
+          <ScalarProperty Name="suseremail" ColumnName="suseremail" />
+          <ScalarProperty Name="susername" ColumnName="susername" />
+          <ScalarProperty Name="sfile" ColumnName="sfile" />
+          <ScalarProperty Name="smessage" ColumnName="smessage" />
+          <ScalarProperty Name="ssubject" ColumnName="ssubject" />
+          <ScalarProperty Name="sid" ColumnName="sid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adsfiles">
+      <EntityTypeMapping TypeName="domainModel.adsfile">
+        <MappingFragment StoreEntitySet="adsfile">
+          <ScalarProperty Name="astatus" ColumnName="astatus" />
+          <ScalarProperty Name="aemail" ColumnName="aemail" />
+          <ScalarProperty Name="ausername" ColumnName="ausername" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="aid" ColumnName="aid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="domain_u">
+      <EntityTypeMapping TypeName="domainModel.domain_u">
+        <MappingFragment StoreEntitySet="domain_u">
+          <ScalarProperty Name="domain_status" ColumnName="domain_status" />
+          <ScalarProperty Name="domain_user" ColumnName="domain_user" />
+          <ScalarProperty Name="domain_name" ColumnName="domain_name" />
+          <ScalarProperty Name="domain_id" ColumnName="domain_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

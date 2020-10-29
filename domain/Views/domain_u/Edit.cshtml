@@ -1,0 +1,105 @@
+﻿@model domain.Models.domain_u
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Domain</h6>
+
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+
+        <div class="col-12 order-xl-1">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Update</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="@Url.Action("Edit","domain_u")">
+                        @Html.AntiForgeryToken()
+
+                        <div class="pl-lg-4">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.domain_id)
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="username">Domain Name</label>
+                                        @Html.EditorFor(model => model.domain_name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.domain_name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">User</label>
+                                        <select name="domain_user" class="form-control" required>
+                                            @foreach (var item in ViewBag.domain_user)
+                                            {
+                                                if (item.userid == Model.domain_user)
+                                                {
+                                                    <option value="@item.userid" selected>@item.username</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.userid">@item.username</option>
+                                                }
+
+                                            }
+
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.domain_user, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Update" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <a href="@Url.Action("Index","domain_u")" class="btn btn-sm btn-dark">Back To Index</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

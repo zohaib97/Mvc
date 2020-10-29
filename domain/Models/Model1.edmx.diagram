@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9747cf8bf0af416282288f564e713d83" Name="Diagram1">
+        <EntityTypeShape EntityType="domainModel.role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="domainModel.user" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="domainModel.FK__users__role_id__4D94879B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="domainModel.support" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="domainModel.adsfile" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="domainModel.domain_u" Width="1.5" PointX="5.25" PointY="1.625" />
+        <AssociationConnector Association="domainModel.FK__domain_u__domain__3A81B327" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

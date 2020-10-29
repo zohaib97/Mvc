@@ -1,0 +1,128 @@
+﻿@model domain.Models.user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Users</h6>
+
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">User Name</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.username)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">User Email</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.useremail)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">User Password</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.userpass)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">User Contact</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.userphone)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">Skype Id</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.skype_id)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">User Domain</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.domain)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">Daily Pages View</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.Daily_pages_views)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-size:17px; border-bottom : 2px solid #5E72E4;">Role</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.role.rolename)
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <a href="@Url.Action("Edit","users", new { id = Model.userid })" class="btn btn-sm btn-dark">Edit</a> |
+                    <a href="@Url.Action("Index","users")" class="btn btn-sm btn-dark">Back To Index</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

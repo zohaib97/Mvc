@@ -30,5 +30,6 @@ namespace domain.Models
         public virtual DbSet<support> supports { get; set; }
         public virtual DbSet<adsfile> adsfiles { get; set; }
         public virtual DbSet<domain_u> domain_u { get; set; }
+        public virtual DbSet<tag> tags { get; set; }
     }
 }

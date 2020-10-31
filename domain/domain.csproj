@@ -163,6 +163,9 @@
     <Compile Include="Models\support.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tag.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\user.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -294,6 +297,7 @@
     <Content Include="Views\Home\Adsupload.cshtml" />
     <Content Include="Views\Home\Adslist.cshtml" />
     <Content Include="Views\users\Adddomain.cshtml" />
+    <Content Include="Views\users\Adtags.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

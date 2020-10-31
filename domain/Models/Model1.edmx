@@ -42,6 +42,16 @@
           <Property Name="susername" Type="varchar" MaxLength="200" />
           <Property Name="suseremail" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="tid" />
+          </Key>
+          <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tags" Type="varchar" MaxLength="200" />
+          <Property Name="username" Type="varchar" MaxLength="200" />
+          <Property Name="userid" Type="varchar" MaxLength="200" />
+          <Property Name="tstatus" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="userid" />
@@ -87,6 +97,7 @@
           <EntitySet Name="domain_u" EntityType="Self.domain_u" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__domain_u__domain__3A81B327" Association="Self.FK__domain_u__domain__3A81B327">
             <End Role="users" EntitySet="users" />
@@ -153,6 +164,7 @@
             <End Role="user" EntitySet="users" />
             <End Role="domain_u" EntitySet="domain_u" />
           </AssociationSet>
+          <EntitySet Name="tags" EntityType="domainModel.tag" />
         </EntityContainer>
         <EntityType Name="support">
           <Key>
@@ -197,6 +209,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tag">
+          <Key>
+            <PropertyRef Name="tid" />
+          </Key>
+          <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tstatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -258,6 +280,17 @@
                 <ScalarProperty Name="domain_user" ColumnName="domain_user" />
                 <ScalarProperty Name="domain_name" ColumnName="domain_name" />
                 <ScalarProperty Name="domain_id" ColumnName="domain_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tags">
+            <EntityTypeMapping TypeName="domainModel.tag">
+              <MappingFragment StoreEntitySet="tags">
+                <ScalarProperty Name="tstatus" ColumnName="tstatus" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="tid" ColumnName="tid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

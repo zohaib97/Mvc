@@ -52,6 +52,7 @@
       <End Role="user" EntitySet="users" />
       <End Role="domain_u" EntitySet="domain_u" />
     </AssociationSet>
+    <EntitySet Name="tags" EntityType="domainModel.tag" />
   </EntityContainer>
   <EntityType Name="support">
     <Key>
@@ -96,4 +97,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="tag">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tstatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

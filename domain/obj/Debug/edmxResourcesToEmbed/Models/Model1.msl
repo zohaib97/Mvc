@@ -59,5 +59,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tags">
+      <EntityTypeMapping TypeName="domainModel.tag">
+        <MappingFragment StoreEntitySet="tags">
+          <ScalarProperty Name="tstatus" ColumnName="tstatus" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -169,5 +169,13 @@ namespace domain.Controllers
             return RedirectToAction("Index","Home");
         
         }
+
+        public ActionResult Adtags()
+        {
+
+
+            return View();
+
+        }
     }
 }

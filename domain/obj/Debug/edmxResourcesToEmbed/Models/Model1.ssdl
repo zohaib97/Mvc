@@ -37,6 +37,16 @@
     <Property Name="susername" Type="varchar" MaxLength="200" />
     <Property Name="suseremail" Type="varchar" MaxLength="200" />
   </EntityType>
+  <EntityType Name="tags">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tags" Type="varchar" MaxLength="200" />
+    <Property Name="username" Type="varchar" MaxLength="200" />
+    <Property Name="userid" Type="varchar" MaxLength="200" />
+    <Property Name="tstatus" Type="varchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="userid" />
@@ -82,6 +92,7 @@
     <EntitySet Name="domain_u" EntityType="Self.domain_u" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__domain_u__domain__3A81B327" Association="Self.FK__domain_u__domain__3A81B327">
       <End Role="users" EntitySet="users" />

@@ -4,7 +4,9 @@
     ViewBag.Title = "Adtags";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section heads{
 
+    }
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
         <div class="header-body">
@@ -34,7 +36,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" enctype="multipart/form-data" action="@Url.Action("Adsupload","Home")">
+                    <form method="post" enctype="multipart/form-data" action="@Url.Action("Adtags","users")">
                         @Html.AntiForgeryToken()
 
                         <div class="pl-lg-4">
@@ -46,19 +48,21 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="userpass">User email</label>
-                                        <input type="email" name="aemail" value="@Session["useremail"]" class="form-control" readonly />
+                                        <input type="email"  value="@Session["useremail"]" class="form-control" readonly />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="userpass">User Name</label>
-                                        <input type="text" name="ausername" value="@Session["username"]" class="form-control" readonly />
+                                        <input type="text" name="username" value="@Session["username"]" class="form-control" readonly />
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="userpass">File</label>
-                                        <input type="text" name="ausername" value="" class="form-control" data-role="tagsinput" />
+                                        <input type="text" data-role="tagsinput"  name="hjdsj" class="form-control">
+                                        <input type="text" name="userid" value="@Session["userid"]" class="form-control"hidden/>
                                     </div>
                                 </div>
 
@@ -95,3 +99,7 @@
     </div>
 
 </div>
+@section scripts{
+
+  }  
+    

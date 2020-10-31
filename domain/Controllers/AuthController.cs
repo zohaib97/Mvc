@@ -48,6 +48,12 @@ namespace domain.Controllers
                         Session["username"] = us.username;
                         Session["useremail"] = us.useremail;
                         Session["userrole"] = us.role_id;
+                        var uss = db.userprofiles.Where(x => x.users_id == us.userid).FirstOrDefault();
+                        if(uss != null)
+                        {
+                            Session["userproid"] = uss.proid;
+                            Session["userimage"] = uss.proimage;
+                        }
                         return RedirectToAction("Index", "Home");
                     }
                     else

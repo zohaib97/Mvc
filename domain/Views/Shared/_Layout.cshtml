@@ -8,6 +8,7 @@
     <meta name="author" content="Creative Tim">
     <title>Domian | @ViewBag.Title</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    @*<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />*@
     <!-- Favicon -->
     <link rel="icon" href="~/sitecontent/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -18,7 +19,9 @@
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="~/sitecontent/css/argon.min5438.css?v=1.2.0" type="text/css">
-  
+    <link href="~/Content/tagsinput.css" rel="stylesheet" type="text/css">
+
+
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
@@ -84,6 +87,12 @@
                                     <span class="nav-link-text">Ads File List</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("usertags", "users")">
+                                    <i class="ni ni-bullet-list-67 text-danger"></i>
+                                    <span class="nav-link-text">User Tags</span>
+                                </a>
+                            </li>
                         }
                         @if (User.IsInRole("User"))
                         {
@@ -105,7 +114,7 @@
                                     <span class="nav-link-text">Add Domain</span>
                                 </a>
                             </li>
-                           
+
                             <li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("Adtags", "users")">
                                     <i class="ni ni-world-2 text-dark"></i>
@@ -117,42 +126,7 @@
                         }
 
 
-                        @*<li class="nav-item">
-            <a class="nav-link" href="examples/map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="examples/profile.html">
-                <i class="ni ni-single-02 text-yellow"></i>
-                <span class="nav-link-text">Profile</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="examples/tables.html">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Tables</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="examples/login.html">
-                <i class="ni ni-key-25 text-info"></i>
-                <span class="nav-link-text">Login</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="examples/register.html">
-                <i class="ni ni-circle-08 text-pink"></i>
-                <span class="nav-link-text">Register</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="examples/upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade</span>
-            </a>
-        </li>*@
+
                     </ul>
 
                 </div>
@@ -247,7 +221,6 @@
 
 
 
-                                        @*<a href="#!" class="dropdown-item text-center text-primary font-weight-bold">view all</a>*@
 
 
 
@@ -433,10 +406,11 @@
                                                 </div>
                                             </div>
                                         </a>
+                                        <!-- View all -->
+                                        <a href="#!" class="dropdown-item text-center text-primary font-weight-bold">View all</a>
+
                                     </div>
                                 }
-                                <!-- View all -->
-                                <a href="#!" class="dropdown-item text-center text-primary font-weight-bold">View all</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -490,7 +464,22 @@
                             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm rounded-circle">
-                                        <img alt="Image placeholder" src="~/sitecontent/img/theme/team-4.jpg">
+                                        @if (User.IsInRole("Admin"))
+                                        {<img alt="Image placeholder" src="~/sitecontent/img/theme/team-4.jpg">
+                                        }
+                                        @if (User.IsInRole("User"))
+                                        {
+                                            if (@Session["userimage"] != null)
+                                            {
+                                                <img alt="Image placeholder" src="~/Content/users/@Session["userimage"]">
+
+                                            }
+                                            else
+                                            {
+                                                <img alt="Image placeholder" src="~/sitecontent/img/theme/team-4.jpg">
+
+                                            }
+                                        }
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
                                         <span class="mb-0 text-sm  font-weight-bold">@Session["username"]</span>
@@ -501,28 +490,42 @@
                                 <div class="dropdown-header noti-title">
                                     <h6 class="text-overflow m-0">Welcome!</h6>
                                 </div>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-single-02"></i>
-                                    <span>My profile</span>
-                                </a>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-settings-gear-65"></i>
-                                    <span>Settings</span>
-                                </a>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-calendar-grid-58"></i>
-                                    <span>Activity</span>
-                                </a>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-support-16"></i>
-                                    <span>Support</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
+                                @if (User.IsInRole("User"))
+                                {
+                                    if (Session["userproid"] != null)
+                                    {
+                                        <a href="@Url.Action("Details", "userprofiles", new { id = Session["userproid"] })" class="dropdown-item">
+                                            <i class="ni ni-single-02"></i>
+                                            <span>View Profile</span>
+                                        </a>
+                                    }
 
-                                <a href="@Url.Action("logout","Auth")" class="dropdown-item">
-                                    <i class="ni ni-user-run"></i>
-                                    <span>Logout</span>
-                                </a>
+                                    <a href="@Url.Action("Create", "userprofiles")" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>Update Profile</span>
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a href="@Url.Action("logout", "Auth")" class="dropdown-item">
+                                        <i class="ni ni-user-run"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+
+                                    @*<a href="#!" class="dropdown-item">
+                                            <i class="ni ni-calendar-grid-58"></i>
+                                            <span>Activity</span>
+                                        </a>*@
+                                    <div class="dropdown-divider"></div>
+
+                                    <a href="@Url.Action("logout", "Auth")" class="dropdown-item">
+                                        <i class="ni ni-user-run"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                }
                             </div>
                         </li>
                     </ul>
@@ -537,6 +540,7 @@
     <!-- Core -->
     <script src="~/sitecontent/vendor/jquery/dist/jquery.min.js"></script>
     <script src="~/sitecontent/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/sitecontent/vendor/js-cookie/js.cookie.js"></script>
     <script src="~/sitecontent/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
     <script src="~/sitecontent/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
@@ -545,9 +549,8 @@
     <script src="~/sitecontent/vendor/chart.js/dist/Chart.extension.js"></script>
     <!-- Argon JS -->
     <script src="~/sitecontent/js/argon.min5438.js?v=1.2.0"></script>
-    
     <script>
-    // Facebook Pixel Code Don't Delete
+        // Facebook Pixel Code Don't Delete
         ! function (f, b, e, v, n, t, s) {
             if (f.fbq) return;
             n = f.fbq = function () {
@@ -577,7 +580,17 @@
     <noscript>
         <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />
     </noscript>
-    @RenderSection("scripts", required: false);
+    <script src="~/Content/tagsinput.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+        $('.js-example-tags').select2({
+            tags: true,
+            tokenSeparators: [',', ' ']
+        });
+
+    </script>*@
+    @RenderSection("scripts", required: false)
+
 </body>
 
 

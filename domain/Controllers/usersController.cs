@@ -21,9 +21,6 @@ namespace domain.Controllers
         // GET: users
         public ActionResult Index()
         {
-            Session["count"] = db.supports.Count();
-            Session["adcount"] = db.adsfiles.Count();
-            Session["dcount"] = db.domain_u.Where(x => x.domain_status == "Not_Approve").Count();
             var users = db.users.Where(x => x.role_id == 2).Include(u => u.role);
             return View(users.ToList());
         }
@@ -151,8 +148,7 @@ namespace domain.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public ActionResult Adddomain()
+ public ActionResult Adddomain()
         {
             var userid = Convert.ToInt32( Session["userid"]);
             var a = db.users.Where(x => x.userid == userid).FirstOrDefault();
@@ -169,13 +165,70 @@ namespace domain.Controllers
             return RedirectToAction("Index","Home");
         
         }
-
-        public ActionResult Adtags()
+	public ActionResult Adtags()
         {
 
 
             return View();
 
         }
+        [HttpPost]
+        public ActionResult Adtags(usertag usertag,tag tag,string userid,string username, string[] hjdsj)
+        {
+            tag.userid = userid;
+            tag.username = username;
+            db.tags.Add(tag);
+            db.SaveChanges();
+
+            string ad = string.Join("",hjdsj);
+            string[] df = ad.Split(',');
+            foreach (var item in df)
+            {
+                    usertag.tid = tag.tid;
+                    usertag.tags = item;
+                    usertag.ustatus = "Not_Approve";
+                    db.usertags.Add(usertag);
+                    db.SaveChanges();
+                
+                
+            }
+
+            
+            return RedirectToAction("Index","Home");
+
+        }
+
+        public ActionResult usertags()
+        {
+            var list = db.tags.Where(x => x.tid != 0).ToList();
+            return View(list);
+        }
+
+        public ActionResult tagslist(int? id)
+        {
+            var tagslist = db.usertags.Where(x => x.tid == id).ToList();
+            return View(tagslist);
+        }
+
+        public ActionResult tagsapprove(int id)
+        {
+
+            var a = db.usertags.Where(x => x.uid == id).FirstOrDefault();
+            a.ustatus = "Approve";
+            db.Entry(a).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("tagslist", new { id = a.tid });
+        }
+
+        public ActionResult tagsnotapprove(int id)
+        {
+
+            var a = db.usertags.Where(x => x.uid == id).FirstOrDefault();
+            a.ustatus = "Not_Approve";
+            db.Entry(a).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("tagslist", new {id=a.tid });
+        }
+
     }
 }

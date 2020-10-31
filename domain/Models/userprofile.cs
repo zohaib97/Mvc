@@ -12,10 +12,15 @@ namespace domain.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tag
+    public partial class userprofile
     {
-        public int tid { get; set; }
-        public string username { get; set; }
-        public string userid { get; set; }
+        public int proid { get; set; }
+        public string proname { get; set; }
+        public string proemail { get; set; }
+        public string proimage { get; set; }
+        public string propass { get; set; }
+        public Nullable<int> users_id { get; set; }
+    
+        public virtual user user { get; set; }
     }
 }

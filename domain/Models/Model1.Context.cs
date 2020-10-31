@@ -25,11 +25,13 @@ namespace domain.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<role> roles { get; set; }
-        public virtual DbSet<user> users { get; set; }
-        public virtual DbSet<support> supports { get; set; }
         public virtual DbSet<adsfile> adsfiles { get; set; }
         public virtual DbSet<domain_u> domain_u { get; set; }
+        public virtual DbSet<role> roles { get; set; }
+        public virtual DbSet<support> supports { get; set; }
+        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<userprofile> userprofiles { get; set; }
         public virtual DbSet<tag> tags { get; set; }
+        public virtual DbSet<usertag> usertags { get; set; }
     }
 }

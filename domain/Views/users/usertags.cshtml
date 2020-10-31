@@ -1,7 +1,7 @@
-﻿@model IEnumerable<domain.Models.adsfile>
+﻿@model IEnumerable<domain.Models.tag>
 
 @{
-    ViewBag.Title = "Adslist";
+    ViewBag.Title = "usertags";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -82,7 +82,7 @@
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
-                    <h6 class="h2 text-white d-inline-block mb-0">List</h6>
+                    <h6 class="h2 text-white d-inline-block mb-0">Tags</h6>
 
                 </div>
                 <div class="col-lg-6 col-5 text-right">
@@ -100,18 +100,17 @@
                 <!-- Card header -->
                 <div class="card-header border-0">
                     <h3 class="float-left mt-2">Index</h3>
-                    @*<a href="@Url.Action("Create", "users")" class="btn btn-success float-right"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Create User</a>*@
+                    @*<a href="@Url.Action("Create", "domain_u")" class="btn btn-success float-right"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Create User</a>*@
                 </div>
                 <!-- Light table -->
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush" id="example">
                         <thead class="thead-light">
                             <tr>
-                                <th>User name</th>
-                                <th>Email</th>
-                                <th>File</th>
-                                <th>Status</th>
-                             
+                                <th>User Name</th>
+                                <th>Tags</th>
+                           
+                               
                             </tr>
                         </thead>
                         <tbody class="list">
@@ -119,28 +118,22 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.ausername)
+                                        @Html.DisplayFor(modelItem => item.username)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.aemail)
+                                        <a href="@Url.Action("tagslist", "users", new { id = item.tid })" class="btn btn-sm btn-success">See more</a>
                                     </td>
-                                    <td>
-                                        <a href="@Html.DisplayFor(modelItem => item.filename)" class="fa fa-download" download >&nbsp;&nbsp;Download</a>
-                                    </td>
-                                    
-
-
-                                   
-                                    <td>
-                                        @if (item.astatus == "Not_Approve")
+                                    @*<td>
+                                        @if (item.tstatus == "Not_Approve")
                                         {
-                                            <a href="@Url.Action("AdsApprove", "Home", new { id = item.aid })" class="btn btn-sm btn-danger"><i class="fa fa-edit"></i>Not Approve</a>
+                                            <a href="@Url.Action("DomainApprove", "domain_u", new { id = item.tid })" class="btn btn-sm btn-danger"><i class="fa fa-edit"></i>Not Approve</a>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("AdsNotApprove", "Home", new { id = item.aid})" class="btn btn-sm btn-success"><i class="fa fa-edit"></i>Approve</a>
+                                            <a href="@Url.Action("DomainNotApprove", "domain_u", new { id = item.tid})" class="btn btn-sm btn-success"><i class="fa fa-edit"></i>Approve</a>
                                         }
-                                    </td>
+                                    </td>*@
+                                    
                                 </tr>
                             }
                         </tbody>

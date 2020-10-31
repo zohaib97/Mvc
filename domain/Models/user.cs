@@ -18,6 +18,7 @@ namespace domain.Models
         public user()
         {
             this.domain_u = new HashSet<domain_u>();
+            this.userprofiles = new HashSet<userprofile>();
         }
     
         public int userid { get; set; }
@@ -32,8 +33,10 @@ namespace domain.Models
         public string status { get; set; }
         public string ecode { get; set; }
     
-        public virtual role role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<domain_u> domain_u { get; set; }
+        public virtual role role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<userprofile> userprofiles { get; set; }
     }
 }

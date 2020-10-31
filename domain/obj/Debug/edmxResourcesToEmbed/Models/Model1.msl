@@ -1,6 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="domainModelStoreContainer" CdmEntityContainer="domainEntities">
+    <EntitySetMapping Name="adsfiles">
+      <EntityTypeMapping TypeName="domainModel.adsfile">
+        <MappingFragment StoreEntitySet="adsfile">
+          <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="ausername" ColumnName="ausername" />
+          <ScalarProperty Name="aemail" ColumnName="aemail" />
+          <ScalarProperty Name="astatus" ColumnName="astatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="domain_u">
+      <EntityTypeMapping TypeName="domainModel.domain_u">
+        <MappingFragment StoreEntitySet="domain_u">
+          <ScalarProperty Name="domain_id" ColumnName="domain_id" />
+          <ScalarProperty Name="domain_name" ColumnName="domain_name" />
+          <ScalarProperty Name="domain_user" ColumnName="domain_user" />
+          <ScalarProperty Name="domain_status" ColumnName="domain_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="roles">
       <EntityTypeMapping TypeName="domainModel.role">
         <MappingFragment StoreEntitySet="roles">
@@ -9,11 +30,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="supports">
+      <EntityTypeMapping TypeName="domainModel.support">
+        <MappingFragment StoreEntitySet="support">
+          <ScalarProperty Name="sid" ColumnName="sid" />
+          <ScalarProperty Name="ssubject" ColumnName="ssubject" />
+          <ScalarProperty Name="smessage" ColumnName="smessage" />
+          <ScalarProperty Name="sfile" ColumnName="sfile" />
+          <ScalarProperty Name="susername" ColumnName="susername" />
+          <ScalarProperty Name="suseremail" ColumnName="suseremail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="domainModel.user">
         <MappingFragment StoreEntitySet="users">
-          <ScalarProperty Name="ecode" ColumnName="ecode" />
-          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="useremail" ColumnName="useremail" />
@@ -23,50 +54,39 @@
           <ScalarProperty Name="skype_id" ColumnName="skype_id" />
           <ScalarProperty Name="domain" ColumnName="domain" />
           <ScalarProperty Name="Daily_pages_views" ColumnName="Daily_pages_views" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="ecode" ColumnName="ecode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="supports">
-      <EntityTypeMapping TypeName="domainModel.support">
-        <MappingFragment StoreEntitySet="support">
-          <ScalarProperty Name="suseremail" ColumnName="suseremail" />
-          <ScalarProperty Name="susername" ColumnName="susername" />
-          <ScalarProperty Name="sfile" ColumnName="sfile" />
-          <ScalarProperty Name="smessage" ColumnName="smessage" />
-          <ScalarProperty Name="ssubject" ColumnName="ssubject" />
-          <ScalarProperty Name="sid" ColumnName="sid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="adsfiles">
-      <EntityTypeMapping TypeName="domainModel.adsfile">
-        <MappingFragment StoreEntitySet="adsfile">
-          <ScalarProperty Name="astatus" ColumnName="astatus" />
-          <ScalarProperty Name="aemail" ColumnName="aemail" />
-          <ScalarProperty Name="ausername" ColumnName="ausername" />
-          <ScalarProperty Name="filename" ColumnName="filename" />
-          <ScalarProperty Name="aid" ColumnName="aid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="domain_u">
-      <EntityTypeMapping TypeName="domainModel.domain_u">
-        <MappingFragment StoreEntitySet="domain_u">
-          <ScalarProperty Name="domain_status" ColumnName="domain_status" />
-          <ScalarProperty Name="domain_user" ColumnName="domain_user" />
-          <ScalarProperty Name="domain_name" ColumnName="domain_name" />
-          <ScalarProperty Name="domain_id" ColumnName="domain_id" />
+    <EntitySetMapping Name="userprofiles">
+      <EntityTypeMapping TypeName="domainModel.userprofile">
+        <MappingFragment StoreEntitySet="userprofile">
+          <ScalarProperty Name="users_id" ColumnName="users_id" />
+          <ScalarProperty Name="propass" ColumnName="propass" />
+          <ScalarProperty Name="proimage" ColumnName="proimage" />
+          <ScalarProperty Name="proemail" ColumnName="proemail" />
+          <ScalarProperty Name="proname" ColumnName="proname" />
+          <ScalarProperty Name="proid" ColumnName="proid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tags">
       <EntityTypeMapping TypeName="domainModel.tag">
         <MappingFragment StoreEntitySet="tags">
-          <ScalarProperty Name="tstatus" ColumnName="tstatus" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="tags" ColumnName="tags" />
           <ScalarProperty Name="tid" ColumnName="tid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usertags">
+      <EntityTypeMapping TypeName="domainModel.usertag">
+        <MappingFragment StoreEntitySet="usertags">
+          <ScalarProperty Name="ustatus" ColumnName="ustatus" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

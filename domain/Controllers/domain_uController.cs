@@ -17,9 +17,6 @@ namespace domain.Controllers
         // GET: domain_u
         public ActionResult Index()
         {
-            Session["count"] = db.supports.Count();
-            Session["adcount"] = db.adsfiles.Count();
-            Session["dcount"] = db.domain_u.Where(x => x.domain_status == "Not_Approve").Count();
             var domain_u = db.domain_u.Include(d => d.user).ToList();
             return View(domain_u);
         }
@@ -124,17 +121,6 @@ namespace domain.Controllers
         //    db.SaveChanges();
         //    return RedirectToAction("Index");
         //}
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-
         public ActionResult DomainApprove(int id)
         {
 
@@ -153,6 +139,15 @@ namespace domain.Controllers
             db.Entry(a).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

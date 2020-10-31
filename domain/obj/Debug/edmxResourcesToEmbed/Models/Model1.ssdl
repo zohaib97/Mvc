@@ -42,10 +42,19 @@
       <PropertyRef Name="tid" />
     </Key>
     <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tags" Type="varchar" MaxLength="200" />
     <Property Name="username" Type="varchar" MaxLength="200" />
     <Property Name="userid" Type="varchar" MaxLength="200" />
-    <Property Name="tstatus" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="userprofile">
+    <Key>
+      <PropertyRef Name="proid" />
+    </Key>
+    <Property Name="proid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="proname" Type="varchar" MaxLength="200" />
+    <Property Name="proemail" Type="varchar" MaxLength="200" />
+    <Property Name="proimage" Type="varchar(max)" />
+    <Property Name="propass" Type="varchar" MaxLength="200" />
+    <Property Name="users_id" Type="int" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -63,6 +72,15 @@
     <Property Name="status" Type="nvarchar(max)" />
     <Property Name="ecode" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="usertags">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tags" Type="varchar" MaxLength="200" />
+    <Property Name="tid" Type="int" />
+    <Property Name="ustatus" Type="varchar" MaxLength="200" />
+  </EntityType>
   <Association Name="FK__domain_u__domain__3A81B327">
     <End Role="users" Type="Self.users" Multiplicity="0..1" />
     <End Role="domain_u" Type="Self.domain_u" Multiplicity="*" />
@@ -72,6 +90,18 @@
       </Principal>
       <Dependent Role="domain_u">
         <PropertyRef Name="domain_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userprofi__users__160F4887">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="userprofile" Type="Self.userprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="userprofile">
+        <PropertyRef Name="users_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -93,10 +123,16 @@
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userprofile" EntityType="Self.userprofile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usertags" EntityType="Self.usertags" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__domain_u__domain__3A81B327" Association="Self.FK__domain_u__domain__3A81B327">
       <End Role="users" EntitySet="users" />
       <End Role="domain_u" EntitySet="domain_u" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userprofi__users__160F4887" Association="Self.FK__userprofi__users__160F4887">
+      <End Role="users" EntitySet="users" />
+      <End Role="userprofile" EntitySet="userprofile" />
     </AssociationSet>
     <AssociationSet Name="FK__users__role_id__3B75D760" Association="Self.FK__users__role_id__3B75D760">
       <End Role="roles" EntitySet="roles" />

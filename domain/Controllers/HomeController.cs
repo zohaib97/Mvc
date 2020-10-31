@@ -11,13 +11,11 @@ namespace domain.Controllers
 {
     public class HomeController : Controller
     {
-
         domainEntities db = new domainEntities();
-        [Authorize(Roles = "User,Admin")]
+        [Authorize(Roles ="User,Admin")]
         public ActionResult Index()
         {
-
-            Session["count"] = db.supports.Count();
+          Session["count"] = db.supports.Count();
             Session["adcount"] = db.adsfiles.Count();
             Session["dcount"] = db.domain_u.Where(x => x.domain_status == "Not_Approve").Count();
             var w = db.domain_u.OrderByDescending(x=> x.domain_id).Where(x=> x.domain_status == "Not_Approve").FirstOrDefault();
@@ -44,7 +42,6 @@ namespace domain.Controllers
             }
             return View();
         }
-
         public ActionResult Support()
         {
 
@@ -83,9 +80,9 @@ namespace domain.Controllers
                     try
                     {
 
-                        path = Path.Combine(Server.MapPath("~/Content/upload/"), random + Path.GetFileName(file.FileName));
+                        path = Path.Combine(Server.MapPath("~/Content/upload/"), Path.GetFileName(file.FileName));
                         file.SaveAs(path);
-                        path = "../Content/upload/" + random + Path.GetFileName(file.FileName);
+                        path = "../Content/upload/"+Path.GetFileName(file.FileName);
 
                         //    ViewBag.Message = "File uploaded successfully";
                     }
@@ -110,7 +107,6 @@ namespace domain.Controllers
 
             return path;
         }
-
 
         public ActionResult Adsupload()
         {
@@ -152,9 +148,9 @@ namespace domain.Controllers
                     try
                     {
 
-                        path = Path.Combine(Server.MapPath("~/Content/adsupload/"), random + Path.GetFileName(file.FileName));
+                        path = Path.Combine(Server.MapPath("~/Content/upload/adsupload/"), Path.GetFileName(file.FileName));
                         file.SaveAs(path);
-                        path = "../Content/adsupload/" + random + Path.GetFileName(file.FileName);
+                        path = "../Content/upload/adsupload/" + Path.GetFileName(file.FileName);
 
                         //    ViewBag.Message = "File uploaded successfully";
                     }
@@ -206,7 +202,6 @@ namespace domain.Controllers
             db.SaveChanges();
             return RedirectToAction("Adslist");
         }
-
 
 
     }

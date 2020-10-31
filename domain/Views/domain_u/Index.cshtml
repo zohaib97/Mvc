@@ -116,29 +116,29 @@
                         <tbody class="list">
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.domain_name)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.user.username)
-                                    </td>
-                                    <td>
-                                        @if (item.domain_status == "Not_Approve")
-                                        {
-                                            <a href="@Url.Action("DomainApprove", "domain_u", new { id = item.domain_id })" class="btn btn-sm btn-danger"><i class=""></i>Not Approve</a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("DomainNotApprove", "domain_u", new { id = item.domain_id})" class="btn btn-sm btn-success"><i class=""></i>Approve</a>
-                                        }
-                                    </td>
-                                    <td>
-                                        <a href=" @Url.Action("Edit", "domain_u", new { id = item.domain_id }) " class="btn btn-sm btn-success rounded-circle"><i class="fa fa-edit"></i></a> |
-                                        <a href=" @Url.Action("Delete", "domain_u", new { id = item.domain_id }) " class="btn btn-sm btn-danger rounded-circle"><i class="fa fa-trash"></i></a> |
-                                        <a href=" @Url.Action("Details", "domain_u", new { id = item.domain_id }) " class="btn btn-sm btn-primary rounded-circle"><i class="fa fa-info"></i></a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.domain_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.user.username)
+                                </td>
+                                <td>
+                                    @if (item.domain_status == "Not_Approve")
+                                    {
+                                        <a href="@Url.Action("DomainApprove", "domain_u", new { id = item.domain_id })" class="btn btn-sm btn-danger"><i class="fa fa-edit"></i>Not Approve</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("DomainNotApprove", "domain_u", new { id = item.domain_id})" class="btn btn-sm btn-success"><i class="fa fa-edit"></i>Approve</a>
+                                    }
+                                </td>
+                                <td>
+                                    <a href=" @Url.Action("Edit", "domain_u", new { id = item.domain_id }) " class="btn btn-sm btn-success rounded-circle"><i class="fa fa-edit"></i></a> |
+                                    <a href=" @Url.Action("Delete", "domain_u", new { id = item.domain_id }) " class="btn btn-sm btn-danger rounded-circle"><i class="fa fa-trash"></i></a> |
+                                    <a href=" @Url.Action("Details", "domain_u", new { id = item.domain_id }) " class="btn btn-sm btn-primary rounded-circle"><i class="fa fa-info"></i></a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

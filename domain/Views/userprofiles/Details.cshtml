@@ -1,0 +1,89 @@
+﻿@model domain.Models.userprofile
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">User Profile</h6>
+
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 ">
+            <div class="card shadow--hover">
+                <div class="card-header border-0">
+                    <h3 style="font-weight:bold; display:inline-block; border-bottom : 2px solid #5E72E4;">Profile Pic</h3>
+                </div>
+                <div class="card-body">
+                    <img src="~/Content/users/@Html.DisplayFor(model=> model.proimage)" style="height:450px; width:100%;" class="img-fluid img-responsive" alt="Alternate Text" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-weight:bold; display:inline-block; border-bottom : 2px solid #5E72E4;">Full Name</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.proname)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-weight:bold; display:inline-block; border-bottom : 2px solid #5E72E4;">Email</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.proemail)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 style="font-weight:bold; display:inline-block; border-bottom : 2px solid #5E72E4;">Password</h3>
+                </div>
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.propass)
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <a href="@Url.Action("Create","userprofiles")" class="btn btn-sm btn-dark">Edit</a> |
+                    <a href="@Url.Action("Index","Home")" class="btn btn-sm btn-dark">Back To Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

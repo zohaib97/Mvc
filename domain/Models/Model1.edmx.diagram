@@ -16,6 +16,8 @@
         <AssociationConnector Association="domainModel.FK__userprofi__users__5629CD9C" />
         <EntityTypeShape EntityType="domainModel.tag" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="domainModel.usertag" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="domainModel.admintag" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="domainModel.adstxt" Width="1.5" PointX="7.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -204,5 +204,151 @@ namespace domain.Controllers
         }
 
 
+        public ActionResult Adstags()
+        {
+
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult Adstags(HttpPostedFileBase atag, admintag admintag)
+        {
+            String path = uploadimgfile2(atag);
+            if (path.Equals("-1"))
+            {
+                ViewBag.error = "File not Uploaded";
+            }
+            else
+            {
+               
+                admintag.atag = path;
+                db.admintags.Add(admintag);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
+
+        }
+
+
+
+        [HttpPost]
+        public string uploadimgfile2(HttpPostedFileBase file)
+        {
+            Random r = new Random();
+            string path = "-1";
+            int random = r.Next();
+            if (file != null)
+            {
+                string extension = Path.GetExtension(file.FileName);
+                if (extension.ToLower().Equals(".csv") || extension.ToLower().Equals(".xlsx") || extension.ToLower().Equals(".docx"))
+                {
+                    try
+                    {
+
+                        path = Path.Combine(Server.MapPath("~/Content/upload/adminupload/adtags/"), Path.GetFileName(file.FileName));
+                        file.SaveAs(path);
+                        path = "../Content/upload/adminupload/adtags/" + Path.GetFileName(file.FileName);
+
+                        //    ViewBag.Message = "File uploaded successfully";
+                    }
+                    catch (Exception)
+                    {
+                        path = "-1";
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Only csv ,xlsx or docs formats are acceptable....'); </script>");
+                }
+            }
+
+            else
+            {
+                Response.Write("<script>alert('Please select a file'); </script>");
+                path = "-1";
+            }
+
+
+
+            return path;
+        }
+
+        public ActionResult Adstxt()
+        {
+
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult Adstxt(HttpPostedFileBase txtfile, adstxt adstxt)
+        {
+            String path = uploadimgfile3(txtfile);
+            if (path.Equals("-1"))
+            {
+                ViewBag.error = "File not Uploaded";
+            }
+            else
+            {
+
+                adstxt.txtfile = path;
+                db.adstxts.Add(adstxt);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
+
+        }
+
+
+
+        [HttpPost]
+        public string uploadimgfile3(HttpPostedFileBase file)
+        {
+            Random r = new Random();
+            string path = "-1";
+            int random = r.Next();
+            if (file != null)
+            {
+                string extension = Path.GetExtension(file.FileName);
+                if (extension.ToLower().Equals(".csv") || extension.ToLower().Equals(".xlsx") || extension.ToLower().Equals(".docx"))
+                {
+                    try
+                    {
+
+                        path = Path.Combine(Server.MapPath("~/Content/upload/adminupload/adtxt/"), Path.GetFileName(file.FileName));
+                        file.SaveAs(path);
+                        path = "../Content/upload/adminupload/adtxt/" + Path.GetFileName(file.FileName);
+
+                        //    ViewBag.Message = "File uploaded successfully";
+                    }
+                    catch (Exception)
+                    {
+                        path = "-1";
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Only csv ,xlsx or docs formats are acceptable....'); </script>");
+                }
+            }
+
+            else
+            {
+                Response.Write("<script>alert('Please select a file'); </script>");
+                path = "-1";
+            }
+
+
+
+            return path;
+        }
+
     }
 }

@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="domainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admintags">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="atag" Type="varchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="adsfile">
     <Key>
       <PropertyRef Name="aid" />
@@ -9,6 +16,13 @@
     <Property Name="ausername" Type="varchar" MaxLength="200" />
     <Property Name="aemail" Type="varchar" MaxLength="200" />
     <Property Name="astatus" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="adstxt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="txtfile" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="domain_u">
     <Key>
@@ -71,6 +85,7 @@
     <Property Name="Daily_pages_views" Type="nvarchar(max)" />
     <Property Name="status" Type="nvarchar(max)" />
     <Property Name="ecode" Type="nvarchar(max)" />
+    <Property Name="fileperm" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="usertags">
     <Key>
@@ -118,7 +133,9 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="domainModelStoreContainer">
+    <EntitySet Name="admintags" EntityType="Self.admintags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="adsfile" EntityType="Self.adsfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adstxt" EntityType="Self.adstxt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="domain_u" EntityType="Self.domain_u" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />

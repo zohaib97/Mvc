@@ -32,6 +32,7 @@ namespace domain.Models
         public string Daily_pages_views { get; set; }
         public string status { get; set; }
         public string ecode { get; set; }
+        public string fileperm { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<domain_u> domain_u { get; set; }

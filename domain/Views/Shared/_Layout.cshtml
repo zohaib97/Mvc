@@ -93,6 +93,18 @@
                                     <span class="nav-link-text">User Tags</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Adstags", "Home")">
+                                    <i class="ni ni-tag text-blue"></i>
+                                    <span class="nav-link-text">Ads tags</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Adstxt", "Home")">
+                                    <i class="ni ni-folder-17 text-green"></i>
+                                    <span class="nav-link-text">Ads txt</span>
+                                </a>
+                            </li>
                         }
                         @if (User.IsInRole("User"))
                         {
@@ -119,6 +131,19 @@
                                 <a class="nav-link" href="@Url.Action("Adtags", "users")">
                                     <i class="ni ni-tag text-dark"></i>
                                     <span class="nav-link-text">Add tags</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("admintagslist", "users")">
+                                    <i class="ni ni-tag text-dark"></i>
+                                    <span class="nav-link-text">Admin tags</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("admintxtlist", "users")">
+                                    <i class="ni ni-folder-17 text-green"></i>
+                                    <span class="nav-link-text">Admin txt</span>
                                 </a>
                             </li>
 
@@ -581,14 +606,15 @@
         <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />
     </noscript>
     <script src="~/Content/tagsinput.js"></script>
+    
     @*<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script>
-        $('.js-example-tags').select2({
-            tags: true,
-            tokenSeparators: [',', ' ']
-        });
+        <script>
+            $('.js-example-tags').select2({
+                tags: true,
+                tokenSeparators: [',', ' ']
+            });
 
-    </script>*@
+        </script>*@
     @RenderSection("scripts", required: false)
 
 </body>

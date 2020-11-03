@@ -45,6 +45,7 @@
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="domainModel.user">
         <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="fileperm" ColumnName="fileperm" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="useremail" ColumnName="useremail" />
@@ -87,6 +88,22 @@
           <ScalarProperty Name="tid" ColumnName="tid" />
           <ScalarProperty Name="tags" ColumnName="tags" />
           <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admintags">
+      <EntityTypeMapping TypeName="domainModel.admintag">
+        <MappingFragment StoreEntitySet="admintags">
+          <ScalarProperty Name="atag" ColumnName="atag" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adstxts">
+      <EntityTypeMapping TypeName="domainModel.adstxt">
+        <MappingFragment StoreEntitySet="adstxt">
+          <ScalarProperty Name="txtfile" ColumnName="txtfile" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

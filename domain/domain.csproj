@@ -136,7 +136,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\admintag.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\adsfile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\adstxt.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class1.cs" />
@@ -309,9 +315,15 @@
     <Content Include="Views\userprofiles\Index.cshtml" />
     <Content Include="Views\users\usertags.cshtml" />
     <Content Include="Views\users\tagslist.cshtml" />
+    <Content Include="Views\Home\Adstags.cshtml" />
+    <Content Include="Views\users\admintagslist.cshtml" />
+    <Content Include="Views\Home\Adstxt.cshtml" />
+    <Content Include="Views\users\admintxtlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\upload\adminupload\adtags\" />
+    <Folder Include="Content\upload\adminupload\adtxt\" />
     <Folder Include="Content\upload\adsupload\" />
     <Folder Include="Content\users\" />
   </ItemGroup>

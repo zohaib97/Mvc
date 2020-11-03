@@ -24,6 +24,25 @@ namespace domain.Controllers
             var users = db.users.Where(x => x.role_id == 2).Include(u => u.role);
             return View(users.ToList());
         }
+        public ActionResult filepermAllow(int id)
+        {
+
+            var a = db.users.Where(x => x.userid == id).FirstOrDefault();
+            a.fileperm = "Allow";
+            db.Entry(a).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult filepermNotAllow(int id)
+        {
+
+            var a = db.users.Where(x => x.userid == id).FirstOrDefault();
+            a.fileperm = "Not_Allow";
+            db.Entry(a).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         // GET: users/Details/5
         public ActionResult Details(int? id)
@@ -167,9 +186,21 @@ namespace domain.Controllers
         }
 	public ActionResult Adtags()
         {
+            int user = Convert.ToInt32(Session["userid"]);
+            var a = db.users.Where(x => x.fileperm == "Allow" && x.userid == user).FirstOrDefault();
+            if (a != null)
+            {
+               
+                return View();
+            }
+            else
+            {
+                Session["Permission"] = "You are not Allowed to Add tags ask Admin to Allow you";
+                return RedirectToAction("Index", "Home");
+            }
 
 
-            return View();
+            
 
         }
         [HttpPost]
@@ -228,6 +259,28 @@ namespace domain.Controllers
             db.Entry(a).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("tagslist", new {id=a.tid });
+        }
+
+        public ActionResult admintagslist()
+        {
+            int user = Convert.ToInt32( Session["userid"]);
+            var a = db.users.Where(x => x.fileperm == "Allow" && x.userid == user).FirstOrDefault();
+            if (a !=null)
+            {
+                var list = db.admintags.Where(x => x.id != 0).ToList();
+                return View(list);
+            }
+            else
+            {
+                Session["Permission"] = "You are not Allowed to see ask Admin to Allow you";
+                return RedirectToAction("Index","Home");
+            }
+        }
+        public ActionResult admintxtlist()
+        {
+            var txt = db.adstxts.Where(x => x.id != 0).ToList();
+
+            return View(txt);
         }
 
     }

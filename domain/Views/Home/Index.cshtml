@@ -200,4 +200,22 @@
             </div>
         </div>
     </footer>
-</div> 
+</div>
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @if (Session["Permission"] != null)
+    {
+
+
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Not Allow',
+                text: '@Session["Permission"]'
+
+            });
+
+        </script>
+        Session["Permission"]= null;
+    }
+}

@@ -57,6 +57,7 @@
     <NavigationProperty Name="domain_u" Relationship="Self.FK__domain_u__domain__5165187F" FromRole="users" ToRole="domain_u" />
     <NavigationProperty Name="role" Relationship="Self.FK__users__role_id__52593CB8" FromRole="users" ToRole="roles" />
     <NavigationProperty Name="userprofiles" Relationship="domainModel.FK__userprofi__users__5629CD9C" FromRole="user" ToRole="userprofile" />
+    <Property Name="fileperm" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__domain_u__domain__5165187F">
     <End Role="users" Type="Self.user" Multiplicity="0..1" />
@@ -103,6 +104,8 @@
     </AssociationSet>
     <EntitySet Name="tags" EntityType="domainModel.tag" />
     <EntitySet Name="usertags" EntityType="domainModel.usertag" />
+    <EntitySet Name="admintags" EntityType="domainModel.admintag" />
+    <EntitySet Name="adstxts" EntityType="domainModel.adstxt" />
   </EntityContainer>
   <EntityType Name="userprofile">
     <Key>
@@ -144,5 +147,19 @@
     <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="tid" Type="Int32" />
     <Property Name="ustatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="admintag">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="atag" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="adstxt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="txtfile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

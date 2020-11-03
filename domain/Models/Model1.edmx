@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="domainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admintags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="atag" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="adsfile">
           <Key>
             <PropertyRef Name="aid" />
@@ -14,6 +21,13 @@
           <Property Name="ausername" Type="varchar" MaxLength="200" />
           <Property Name="aemail" Type="varchar" MaxLength="200" />
           <Property Name="astatus" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="adstxt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtfile" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="domain_u">
           <Key>
@@ -76,6 +90,7 @@
           <Property Name="Daily_pages_views" Type="nvarchar(max)" />
           <Property Name="status" Type="nvarchar(max)" />
           <Property Name="ecode" Type="nvarchar(max)" />
+          <Property Name="fileperm" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="usertags">
           <Key>
@@ -123,7 +138,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="domainModelStoreContainer">
+          <EntitySet Name="admintags" EntityType="Self.admintags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adsfile" EntityType="Self.adsfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adstxt" EntityType="Self.adstxt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="domain_u" EntityType="Self.domain_u" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />
@@ -205,6 +222,7 @@
           <NavigationProperty Name="domain_u" Relationship="Self.FK__domain_u__domain__5165187F" FromRole="users" ToRole="domain_u" />
           <NavigationProperty Name="role" Relationship="Self.FK__users__role_id__52593CB8" FromRole="users" ToRole="roles" />
           <NavigationProperty Name="userprofiles" Relationship="domainModel.FK__userprofi__users__5629CD9C" FromRole="user" ToRole="userprofile" />
+          <Property Name="fileperm" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__domain_u__domain__5165187F">
           <End Role="users" Type="Self.user" Multiplicity="0..1" />
@@ -251,6 +269,8 @@
           </AssociationSet>
           <EntitySet Name="tags" EntityType="domainModel.tag" />
           <EntitySet Name="usertags" EntityType="domainModel.usertag" />
+          <EntitySet Name="admintags" EntityType="domainModel.admintag" />
+          <EntitySet Name="adstxts" EntityType="domainModel.adstxt" />
         </EntityContainer>
         <EntityType Name="userprofile">
           <Key>
@@ -292,6 +312,20 @@
           <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="tid" Type="Int32" />
           <Property Name="ustatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="admintag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="atag" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="adstxt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtfile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -343,6 +377,7 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="domainModel.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="fileperm" ColumnName="fileperm" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="useremail" ColumnName="useremail" />
@@ -385,6 +420,22 @@
                 <ScalarProperty Name="tid" ColumnName="tid" />
                 <ScalarProperty Name="tags" ColumnName="tags" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admintags">
+            <EntityTypeMapping TypeName="domainModel.admintag">
+              <MappingFragment StoreEntitySet="admintags">
+                <ScalarProperty Name="atag" ColumnName="atag" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adstxts">
+            <EntityTypeMapping TypeName="domainModel.adstxt">
+              <MappingFragment StoreEntitySet="adstxt">
+                <ScalarProperty Name="txtfile" ColumnName="txtfile" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

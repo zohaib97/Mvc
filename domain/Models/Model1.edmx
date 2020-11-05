@@ -5,12 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="domainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admincsvtags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tags" Type="varchar" MaxLength="200" />
+          <Property Name="userid" Type="int" />
+        </EntityType>
         <EntityType Name="admintags">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="atag" Type="varchar" MaxLength="200" />
+          <Property Name="userid" Type="int" />
         </EntityType>
         <EntityType Name="adsfile">
           <Key>
@@ -28,6 +37,14 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="txtfile" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Country" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="domain_u">
           <Key>
@@ -99,7 +116,6 @@
           <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tags" Type="varchar" MaxLength="200" />
           <Property Name="tid" Type="int" />
-          <Property Name="ustatus" Type="varchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK__domain_u__domain__3A81B327">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
@@ -138,9 +154,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="domainModelStoreContainer">
+          <EntitySet Name="admincsvtags" EntityType="Self.admincsvtags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admintags" EntityType="Self.admintags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adsfile" EntityType="Self.adsfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adstxt" EntityType="Self.adstxt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="domain_u" EntityType="Self.domain_u" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />
@@ -268,9 +286,11 @@
             <End Role="userprofile" EntitySet="userprofiles" />
           </AssociationSet>
           <EntitySet Name="tags" EntityType="domainModel.tag" />
-          <EntitySet Name="usertags" EntityType="domainModel.usertag" />
           <EntitySet Name="admintags" EntityType="domainModel.admintag" />
           <EntitySet Name="adstxts" EntityType="domainModel.adstxt" />
+          <EntitySet Name="customers" EntityType="domainModel.customer" />
+          <EntitySet Name="admincsvtags" EntityType="domainModel.admincsvtag" />
+          <EntitySet Name="usertags" EntityType="domainModel.usertag" />
         </EntityContainer>
         <EntityType Name="userprofile">
           <Key>
@@ -304,21 +324,13 @@
           <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="usertag">
-          <Key>
-            <PropertyRef Name="uid" />
-          </Key>
-          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="tid" Type="Int32" />
-          <Property Name="ustatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="admintag">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="atag" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" />
         </EntityType>
         <EntityType Name="adstxt">
           <Key>
@@ -326,6 +338,30 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="txtfile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="admincsvtag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="usertag">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tid" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -413,19 +449,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="usertags">
-            <EntityTypeMapping TypeName="domainModel.usertag">
-              <MappingFragment StoreEntitySet="usertags">
-                <ScalarProperty Name="ustatus" ColumnName="ustatus" />
-                <ScalarProperty Name="tid" ColumnName="tid" />
-                <ScalarProperty Name="tags" ColumnName="tags" />
-                <ScalarProperty Name="uid" ColumnName="uid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="admintags">
             <EntityTypeMapping TypeName="domainModel.admintag">
               <MappingFragment StoreEntitySet="admintags">
+                <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="atag" ColumnName="atag" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -436,6 +463,33 @@
               <MappingFragment StoreEntitySet="adstxt">
                 <ScalarProperty Name="txtfile" ColumnName="txtfile" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="domainModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admincsvtags">
+            <EntityTypeMapping TypeName="domainModel.admincsvtag">
+              <MappingFragment StoreEntitySet="admincsvtags">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usertags">
+            <EntityTypeMapping TypeName="domainModel.usertag">
+              <MappingFragment StoreEntitySet="usertags">
+                <ScalarProperty Name="tid" ColumnName="tid" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

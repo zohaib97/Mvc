@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -206,20 +207,39 @@ namespace domain.Controllers
         [HttpPost]
         public ActionResult Adtags(usertag usertag,tag tag,string userid,string username, string[] hjdsj)
         {
+        
             tag.userid = userid;
             tag.username = username;
             db.tags.Add(tag);
             db.SaveChanges();
+            var uid = Convert.ToInt32(userid);
+          //  var a = db.admincsvtags.Where(x => x.userid == uid).ToList();
+            
+         
 
             string ad = string.Join("",hjdsj);
             string[] df = ad.Split(',');
-            foreach (var item in df)
+           
+                foreach (var item in df)
             {
-                    usertag.tid = tag.tid;
-                    usertag.tags = item;
-                    usertag.ustatus = "Not_Approve";
-                    db.usertags.Add(usertag);
-                    db.SaveChanges();
+                var a = db.admincsvtags.Where(x => x.userid == uid && x.tags == item).FirstOrDefault();
+
+                if (a != null)
+                    {
+
+                        usertag.tid = tag.tid;
+                        usertag.tags = item;
+
+                        db.usertags.Add(usertag);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        Session["tagerror"] = "Some of your tags are not matched with admintags";
+                        return RedirectToAction("Index", "Home");
+                    }
+                
+                    
                 
                 
             }
@@ -241,25 +261,25 @@ namespace domain.Controllers
             return View(tagslist);
         }
 
-        public ActionResult tagsapprove(int id)
-        {
+        //public ActionResult tagsapprove(int id)
+        //{
 
-            var a = db.usertags.Where(x => x.uid == id).FirstOrDefault();
-            a.ustatus = "Approve";
-            db.Entry(a).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("tagslist", new { id = a.tid });
-        }
+        //    var a = db.usertags.Where(x => x.uid == id).FirstOrDefault();
+        //    a.ustatus = "Approve";
+        //    db.Entry(a).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    return RedirectToAction("tagslist", new { id = a.tid });
+        //}
 
-        public ActionResult tagsnotapprove(int id)
-        {
+        //public ActionResult tagsnotapprove(int id)
+        //{
 
-            var a = db.usertags.Where(x => x.uid == id).FirstOrDefault();
-            a.ustatus = "Not_Approve";
-            db.Entry(a).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("tagslist", new {id=a.tid });
-        }
+        //    var a = db.usertags.Where(x => x.uid == id).FirstOrDefault();
+        //    a.ustatus = "Not_Approve";
+        //    db.Entry(a).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    return RedirectToAction("tagslist", new {id=a.tid });
+        //}
 
         public ActionResult admintagslist()
         {
@@ -283,5 +303,56 @@ namespace domain.Controllers
             return View(txt);
         }
 
+
+        //public ActionResult copyadmintagslist()
+        //{
+
+
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult copyadmintagslist(HttpPostedFileBase postedFile,csvtag csvtag)
+        //{
+          
+        //    string filePath = string.Empty;
+        //    if (postedFile != null)
+        //    {
+        //        string path = Server.MapPath("~/Content/upload/adminupload/adtags/");
+        //        if (!Directory.Exists(path))
+        //        {
+        //            Directory.CreateDirectory(path);
+        //        }
+
+        //        filePath = path + Path.GetFileName(postedFile.FileName);
+        //        string extension = Path.GetExtension(postedFile.FileName);
+        //        postedFile.SaveAs(filePath);
+
+        //        //Read the contents of CSV file.
+        //        string csvData = System.IO.File.ReadAllText(filePath);
+
+        //        //Execute a loop over the rows.
+        //        foreach (string row in csvData.Split('\n'))
+        //        {
+        //            if (!string.IsNullOrEmpty(row))
+        //            {
+        //                int data = row.Split(',').Length;
+        //                for (var i = 0; i <data ; i++)
+        //                {
+        //                    csvtag.tags = row.Split(',')[i];
+        //                    //csvtag.Name = row.Split(',')[1];
+        //                    //csvtag.Country = row.Split(',')[2];
+        //                    db.csvtags.Add(csvtag);
+        //                    db.SaveChanges();
+        //                }
+                        
+        //            }
+        //        }
+        //    }
+
+        //    return View(csvtag);
+        //}
     }
-}
+
+    }
+

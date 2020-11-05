@@ -216,6 +216,23 @@
             });
 
         </script>
-        Session["Permission"]= null;
+        Session["Permission"] = null;
+    }
+    @if (Session["tagerror"] != null)
+    {
+
+
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                /**/
+                text: '@Session["tagerror"]'
+            /**/
+
+        });
+
+        </script>
+        Session["tagerror"] = null;
     }
 }

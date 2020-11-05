@@ -103,9 +103,11 @@
       <End Role="userprofile" EntitySet="userprofiles" />
     </AssociationSet>
     <EntitySet Name="tags" EntityType="domainModel.tag" />
-    <EntitySet Name="usertags" EntityType="domainModel.usertag" />
     <EntitySet Name="admintags" EntityType="domainModel.admintag" />
     <EntitySet Name="adstxts" EntityType="domainModel.adstxt" />
+    <EntitySet Name="customers" EntityType="domainModel.customer" />
+    <EntitySet Name="admincsvtags" EntityType="domainModel.admincsvtag" />
+    <EntitySet Name="usertags" EntityType="domainModel.usertag" />
   </EntityContainer>
   <EntityType Name="userprofile">
     <Key>
@@ -139,21 +141,13 @@
     <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="usertag">
-    <Key>
-      <PropertyRef Name="uid" />
-    </Key>
-    <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="tid" Type="Int32" />
-    <Property Name="ustatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="admintag">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="atag" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="Int32" />
   </EntityType>
   <EntityType Name="adstxt">
     <Key>
@@ -161,5 +155,29 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="txtfile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="admincsvtag">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="usertag">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tid" Type="Int32" />
   </EntityType>
 </Schema>

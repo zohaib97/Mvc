@@ -136,6 +136,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\admincsvtag.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\admintag.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -146,6 +149,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\domain_u.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -319,6 +325,7 @@
     <Content Include="Views\users\admintagslist.cshtml" />
     <Content Include="Views\Home\Adstxt.cshtml" />
     <Content Include="Views\users\admintxtlist.cshtml" />
+    <Content Include="Views\users\copyadmintagslist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

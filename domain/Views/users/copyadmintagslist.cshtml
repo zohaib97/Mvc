@@ -1,0 +1,14 @@
+﻿
+
+@{
+    ViewBag.Title = "copyadmintagslist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>copyadmintagslist</h2>
+
+@using (Html.BeginForm("copyadmintagslist", "users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="postedFile" />
+    <input type="submit" value="Import" />
+}

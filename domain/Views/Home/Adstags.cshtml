@@ -43,11 +43,22 @@
                             <div class="row">
 
 
-                                
+
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="atag">File</label>
                                         <input type="file" name="atag" class="form-control" accept=".csv, .docx, .xlsx" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="atag">File</label>
+                                        <select name="userid" class="form-control">
+                                            @foreach (var item in ViewBag.users)
+                                            {
+                                                <option value="@item.userid">@item.username</option>
+                                            }
+                                        </select>
                                     </div>
                                 </div>
 

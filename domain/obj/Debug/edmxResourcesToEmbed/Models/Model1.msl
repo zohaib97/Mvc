@@ -81,19 +81,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="usertags">
-      <EntityTypeMapping TypeName="domainModel.usertag">
-        <MappingFragment StoreEntitySet="usertags">
-          <ScalarProperty Name="ustatus" ColumnName="ustatus" />
-          <ScalarProperty Name="tid" ColumnName="tid" />
-          <ScalarProperty Name="tags" ColumnName="tags" />
-          <ScalarProperty Name="uid" ColumnName="uid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="admintags">
       <EntityTypeMapping TypeName="domainModel.admintag">
         <MappingFragment StoreEntitySet="admintags">
+          <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="atag" ColumnName="atag" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
@@ -104,6 +95,33 @@
         <MappingFragment StoreEntitySet="adstxt">
           <ScalarProperty Name="txtfile" ColumnName="txtfile" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="domainModel.customer">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admincsvtags">
+      <EntityTypeMapping TypeName="domainModel.admincsvtag">
+        <MappingFragment StoreEntitySet="admincsvtags">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usertags">
+      <EntityTypeMapping TypeName="domainModel.usertag">
+        <MappingFragment StoreEntitySet="usertags">
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

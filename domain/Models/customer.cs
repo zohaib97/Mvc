@@ -12,10 +12,10 @@ namespace domain.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usertag
+    public partial class customer
     {
-        public int uid { get; set; }
-        public string tags { get; set; }
-        public Nullable<int> tid { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Country { get; set; }
     }
 }

@@ -207,29 +207,56 @@ namespace domain.Controllers
         public ActionResult Adstags()
         {
 
-
+            ViewBag.users = db.users.Where(x=>x.role_id== 2).ToList();
             return View();
 
         }
 
         [HttpPost]
-        public ActionResult Adstags(HttpPostedFileBase atag, admintag admintag)
+        public ActionResult Adstags(HttpPostedFileBase atag, int userid, admincsvtag admincsvtag, admintag admintag)
         {
-            String path = uploadimgfile2(atag);
-            if (path.Equals("-1"))
+            string filePath = string.Empty;
+            if (atag != null)
             {
-                ViewBag.error = "File not Uploaded";
-            }
-            else
-            {
-               
-                admintag.atag = path;
+                string path = Server.MapPath("~/Content/upload/adminupload/adtags/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                filePath = path + Path.GetFileName(atag.FileName);
+                string extension = Path.GetExtension(atag.FileName);
+                atag.SaveAs(filePath);
+
+                admintag.atag = "../Content/upload/adminupload/adtags/" + Path.GetFileName(atag.FileName);
+                admintag.userid = userid;
                 db.admintags.Add(admintag);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                
+                //Read the contents of CSV file.
+                string csvData = System.IO.File.ReadAllText(filePath);
+
+                //Execute a loop over the rows.
+                foreach (string row in csvData.Split('\n'))
+                {
+                    if (!string.IsNullOrEmpty(row))
+                    {
+                        int data = row.Split(',').Length;
+                        for (var i = 0; i < data; i++)
+                        {
+                            admincsvtag.tags = row.Split(',')[i];
+                            admincsvtag.userid = userid;
+                            //csvtag.Name = row.Split(',')[1];
+                            //csvtag.Country = row.Split(',')[2];
+                            db.admincsvtags.Add(admincsvtag);
+                            db.SaveChanges();
+                        }
+
+                    }
+                }
             }
 
-            return View();
+            return View("Index");
 
         }
 

@@ -12,10 +12,10 @@ namespace domain.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usertag
+    public partial class admincsvtag
     {
-        public int uid { get; set; }
+        public int id { get; set; }
         public string tags { get; set; }
-        public Nullable<int> tid { get; set; }
+        public Nullable<int> userid { get; set; }
     }
 }

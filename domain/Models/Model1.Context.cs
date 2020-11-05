@@ -32,8 +32,10 @@ namespace domain.Models
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<userprofile> userprofiles { get; set; }
         public virtual DbSet<tag> tags { get; set; }
-        public virtual DbSet<usertag> usertags { get; set; }
         public virtual DbSet<admintag> admintags { get; set; }
         public virtual DbSet<adstxt> adstxts { get; set; }
+        public virtual DbSet<customer> customers { get; set; }
+        public virtual DbSet<admincsvtag> admincsvtags { get; set; }
+        public virtual DbSet<usertag> usertags { get; set; }
     }
 }

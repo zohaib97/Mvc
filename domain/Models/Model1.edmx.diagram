@@ -5,19 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a8ff674976ae404e8e198b92402d6dac" Name="Diagram1">
-        <EntityTypeShape EntityType="domainModel.adsfile" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="domainModel.domain_u" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domainModel.adsfile" Width="1.5" PointX="0.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domainModel.domain_u" Width="1.5" PointX="5.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="domainModel.role" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="domainModel.support" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domainModel.support" Width="1.5" PointX="1.625" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="domainModel.user" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="domainModel.FK__domain_u__domain__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="domainModel.FK__users__role_id__52593CB8" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="domainModel.userprofile" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="domainModel.userprofile" Width="1.5" PointX="5.75" PointY="5.125" />
         <AssociationConnector Association="domainModel.FK__userprofi__users__5629CD9C" />
-        <EntityTypeShape EntityType="domainModel.tag" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="domainModel.usertag" Width="1.5" PointX="7.375" PointY="3.75" />
-        <EntityTypeShape EntityType="domainModel.admintag" Width="1.5" PointX="5.375" PointY="7.75" />
-        <EntityTypeShape EntityType="domainModel.adstxt" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="domainModel.tag" Width="1.5" PointX="7.375" PointY="0.5" />
+        <EntityTypeShape EntityType="domainModel.admintag" Width="1.5" PointX="3.625" PointY="7" />
+        <EntityTypeShape EntityType="domainModel.adstxt" Width="1.5" PointX="6" PointY="7.625" />
+        <EntityTypeShape EntityType="domainModel.customer" Width="1.5" PointX="7.625" PointY="7" />
+        <EntityTypeShape EntityType="domainModel.admincsvtag" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="domainModel.usertag" Width="1.5" PointX="8.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

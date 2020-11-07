@@ -75,6 +75,7 @@
     <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="200" />
     <Property Name="userid" Type="varchar" MaxLength="200" />
+    <Property Name="domainid" Type="int" />
   </EntityType>
   <EntityType Name="userprofile">
     <Key>
@@ -111,6 +112,7 @@
     <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tags" Type="varchar" MaxLength="200" />
     <Property Name="tid" Type="int" />
+    <Property Name="did" Type="int" />
   </EntityType>
   <Association Name="FK__domain_u__domain__3A81B327">
     <End Role="users" Type="Self.users" Multiplicity="0..1" />

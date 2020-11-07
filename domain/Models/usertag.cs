@@ -17,5 +17,6 @@ namespace domain.Models
         public int uid { get; set; }
         public string tags { get; set; }
         public Nullable<int> tid { get; set; }
+        public Nullable<int> did { get; set; }
     }
 }

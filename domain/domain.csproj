@@ -326,6 +326,7 @@
     <Content Include="Views\Home\Adstxt.cshtml" />
     <Content Include="Views\users\admintxtlist.cshtml" />
     <Content Include="Views\users\copyadmintagslist.cshtml" />
+    <Content Include="Views\users\domainlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

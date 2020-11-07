@@ -187,7 +187,9 @@ namespace domain.Controllers
         }
 	public ActionResult Adtags()
         {
+            
             int user = Convert.ToInt32(Session["userid"]);
+           ViewBag.domain = db.domain_u.Where(x => x.domain_user == user).ToList();
             var a = db.users.Where(x => x.fileperm == "Allow" && x.userid == user).FirstOrDefault();
             if (a != null)
             {
@@ -205,11 +207,12 @@ namespace domain.Controllers
 
         }
         [HttpPost]
-        public ActionResult Adtags(usertag usertag,tag tag,string userid,string username, string[] hjdsj)
+        public ActionResult Adtags(usertag usertag,tag tag,string userid,string username, string[] hjdsj,int domainid)
         {
         
             tag.userid = userid;
             tag.username = username;
+            tag.domainid = domainid;
             db.tags.Add(tag);
             db.SaveChanges();
             var uid = Convert.ToInt32(userid);
@@ -229,7 +232,7 @@ namespace domain.Controllers
 
                         usertag.tid = tag.tid;
                         usertag.tags = item;
-
+                    usertag.did = domainid;
                         db.usertags.Add(usertag);
                         db.SaveChanges();
                     }
@@ -254,10 +257,17 @@ namespace domain.Controllers
             var list = db.tags.Where(x => x.tid != 0).ToList();
             return View(list);
         }
+        public ActionResult domainlist(int? id,int doid)
+        {
+            var domain = db.usertags.Where(x => x.tid == id && x.did == doid).ToList();
+            ViewBag.domainname = db.domain_u.Where(x => x.domain_id == doid).ToList();
+            ViewBag.domainid = doid;
+            return View(domain);
+        }
 
         public ActionResult tagslist(int? id)
         {
-            var tagslist = db.usertags.Where(x => x.tid == id).ToList();
+            var tagslist = db.usertags.Where(x => x.did == id).ToList();
             return View(tagslist);
         }
 

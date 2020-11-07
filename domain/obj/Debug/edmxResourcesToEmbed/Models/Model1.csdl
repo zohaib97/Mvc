@@ -140,6 +140,7 @@
     <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="domainid" Type="Int32" />
   </EntityType>
   <EntityType Name="admintag">
     <Key>
@@ -179,5 +180,6 @@
     <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="tid" Type="Int32" />
+    <Property Name="did" Type="Int32" />
   </EntityType>
 </Schema>

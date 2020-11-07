@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<domain.Models.usertag>
 
 @{
-    ViewBag.Title = "tagslist";
+    ViewBag.Title = "domainlist";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section heads{
     @*<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />*@
     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
@@ -82,11 +81,11 @@
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
-                    <h6 class="h2 text-white d-inline-block mb-0">Tags</h6>
+                    <h6 class="h2 text-white d-inline-block mb-0">Domains</h6>
 
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                    @*<a href="#" class="btn btn-sm btn-neutral">New</a>*@
                 </div>
             </div>
         </div>
@@ -102,42 +101,43 @@
                     <h3 class="float-left mt-2">Index</h3>
                     @*<a href="@Url.Action("Create", "domain_u")" class="btn btn-success float-right"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Create User</a>*@
                 </div>
-                <!-- Light table -->
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush" id="example">
                         <thead class="thead-light">
                             <tr>
-                                <th>Tags</th>
-                              
-                               
+                                <th>
+                                    Domain Name
+                                </th>
+                                <th>
+                                    Tags
+                                </th>
+
                             </tr>
                         </thead>
                         <tbody class="list">
-                            @foreach (var item in Model)
-                            {
-                                <tr>
+                            <tr>
+                                @foreach (var item in ViewBag.domainname)
+                                {
+
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.tags)
+                                        @item.domain_name
                                     </td>
-                                   
-                                    @*<td>
-                                        @if (item.ustatus == "Not_Approve")
-                                        {
-                                            <a href="@Url.Action("tagsapprove", "users", new { id = item.uid })" class="btn btn-sm btn-danger"><i class=""></i>Not Approve</a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("tagsnotapprove", "users", new { id = item.uid})" class="btn btn-sm btn-success"><i class=""></i>Approve</a>
-                                        }
-                                    </td>*@
-                                   
-                                </tr>
-                            }
+                                    <td>
+                                        <a href="@Url.Action("tagslist", "users", new { id = ViewBag.domainid })" class="btn btn-sm btn-success">See more</a>
+                                    </td>
+                                }
+
+
+
+
+
+
+
+
+                            </tr>
                         </tbody>
                     </table>
-                    <br />
                 </div>
-
             </div>
         </div>
     </div>

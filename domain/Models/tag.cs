@@ -17,5 +17,6 @@ namespace domain.Models
         public int tid { get; set; }
         public string username { get; set; }
         public string userid { get; set; }
+        public Nullable<int> domainid { get; set; }
     }
 }

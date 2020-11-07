@@ -108,7 +108,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>User Name</th>
-                                <th>Tags</th>
+                                <th>Domain Name</th>
                            
                                
                             </tr>
@@ -121,7 +121,7 @@
                                         @Html.DisplayFor(modelItem => item.username)
                                     </td>
                                     <td>
-                                        <a href="@Url.Action("tagslist", "users", new { id = item.tid })" class="btn btn-sm btn-success">See more</a>
+                                        <a href="@Url.Action("domainlist", "users", new { id = item.tid ,doid = item.domainid })" class="btn btn-sm btn-success">See more</a>
                                     </td>
                                     @*<td>
                                         @if (item.tstatus == "Not_Approve")

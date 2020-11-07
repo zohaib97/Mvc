@@ -80,6 +80,7 @@
           <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="200" />
           <Property Name="userid" Type="varchar" MaxLength="200" />
+          <Property Name="domainid" Type="int" />
         </EntityType>
         <EntityType Name="userprofile">
           <Key>
@@ -116,6 +117,7 @@
           <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tags" Type="varchar" MaxLength="200" />
           <Property Name="tid" Type="int" />
+          <Property Name="did" Type="int" />
         </EntityType>
         <Association Name="FK__domain_u__domain__3A81B327">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
@@ -323,6 +325,7 @@
           <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="domainid" Type="Int32" />
         </EntityType>
         <EntityType Name="admintag">
           <Key>
@@ -362,6 +365,7 @@
           <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="tid" Type="Int32" />
+          <Property Name="did" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -443,6 +447,7 @@
           <EntitySetMapping Name="tags">
             <EntityTypeMapping TypeName="domainModel.tag">
               <MappingFragment StoreEntitySet="tags">
+                <ScalarProperty Name="domainid" ColumnName="domainid" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="tid" ColumnName="tid" />
@@ -487,6 +492,7 @@
           <EntitySetMapping Name="usertags">
             <EntityTypeMapping TypeName="domainModel.usertag">
               <MappingFragment StoreEntitySet="usertags">
+                <ScalarProperty Name="did" ColumnName="did" />
                 <ScalarProperty Name="tid" ColumnName="tid" />
                 <ScalarProperty Name="tags" ColumnName="tags" />
                 <ScalarProperty Name="uid" ColumnName="uid" />

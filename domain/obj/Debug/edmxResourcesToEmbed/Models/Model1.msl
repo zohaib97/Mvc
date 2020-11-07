@@ -75,6 +75,7 @@
     <EntitySetMapping Name="tags">
       <EntityTypeMapping TypeName="domainModel.tag">
         <MappingFragment StoreEntitySet="tags">
+          <ScalarProperty Name="domainid" ColumnName="domainid" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="tid" ColumnName="tid" />
@@ -119,6 +120,7 @@
     <EntitySetMapping Name="usertags">
       <EntityTypeMapping TypeName="domainModel.usertag">
         <MappingFragment StoreEntitySet="usertags">
+          <ScalarProperty Name="did" ColumnName="did" />
           <ScalarProperty Name="tid" ColumnName="tid" />
           <ScalarProperty Name="tags" ColumnName="tags" />
           <ScalarProperty Name="uid" ColumnName="uid" />

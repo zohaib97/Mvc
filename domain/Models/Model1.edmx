@@ -55,6 +55,29 @@
           <Property Name="domain_user" Type="int" />
           <Property Name="domain_status" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="payment_options">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Method" Type="varchar" MaxLength="200" />
+          <Property Name="Paypal_email" Type="varchar" MaxLength="200" />
+          <Property Name="Payoneer_email" Type="varchar" MaxLength="200" />
+          <Property Name="Bank_name" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" MaxLength="200" />
+          <Property Name="Bank_branch" Type="varchar" MaxLength="200" />
+          <Property Name="Acc_no" Type="varchar" MaxLength="200" />
+          <Property Name="Iban_no" Type="varchar" MaxLength="200" />
+          <Property Name="Userid" Type="int" />
+        </EntityType>
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Class" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="roles">
           <Key>
             <PropertyRef Name="roleid" />
@@ -162,6 +185,8 @@
           <EntitySet Name="adstxt" EntityType="Self.adstxt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="domain_u" EntityType="Self.domain_u" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_options" EntityType="Self.payment_options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
@@ -293,6 +318,8 @@
           <EntitySet Name="customers" EntityType="domainModel.customer" />
           <EntitySet Name="admincsvtags" EntityType="domainModel.admincsvtag" />
           <EntitySet Name="usertags" EntityType="domainModel.usertag" />
+          <EntitySet Name="payment_options" EntityType="domainModel.payment_options" />
+          <EntitySet Name="Revenues" EntityType="domainModel.Revenue" />
         </EntityContainer>
         <EntityType Name="userprofile">
           <Key>
@@ -366,6 +393,29 @@
           <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="tid" Type="Int32" />
           <Property Name="did" Type="Int32" />
+        </EntityType>
+        <EntityType Name="payment_options">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Method" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Paypal_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Payoneer_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Bank_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Bank_branch" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Acc_no" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Iban_no" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Userid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Class" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -496,6 +546,31 @@
                 <ScalarProperty Name="tid" ColumnName="tid" />
                 <ScalarProperty Name="tags" ColumnName="tags" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_options">
+            <EntityTypeMapping TypeName="domainModel.payment_options">
+              <MappingFragment StoreEntitySet="payment_options">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Iban_no" ColumnName="Iban_no" />
+                <ScalarProperty Name="Acc_no" ColumnName="Acc_no" />
+                <ScalarProperty Name="Bank_branch" ColumnName="Bank_branch" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Bank_name" ColumnName="Bank_name" />
+                <ScalarProperty Name="Payoneer_email" ColumnName="Payoneer_email" />
+                <ScalarProperty Name="Paypal_email" ColumnName="Paypal_email" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revenues">
+            <EntityTypeMapping TypeName="domainModel.Revenue">
+              <MappingFragment StoreEntitySet="Revenue">
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

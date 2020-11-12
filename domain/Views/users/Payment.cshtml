@@ -1,0 +1,177 @@
+﻿@model domain.Models.payment_options
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Payment</h6>
+
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    @*<a href="#" class="btn btn-sm btn-neutral">New</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+
+        <div class="col-12 order-xl-1">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            @*<h3 class="mb-0">Create</h3>*@
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" action="@Url.Action("Payment","users")">
+                        @Html.AntiForgeryToken()
+
+                        <div class="pl-lg-4">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="userpass">Payment Option</label>
+                                        <select name="Method" class="form-control" id="payoption">
+                                            <option>Select Option</option>
+                                            <option value="Paypal">Paypal</option>
+                                            <option value="Payoneer">Payoneer</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row" id="Paypal" style="display:none;">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="Paypal_email">Paypal Email</label>
+                                        <input type="email" class="form-control" name="Paypal_email" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="Payoneer" style="display:none;">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="Payoneer_email">Payoneer Email</label>
+                                        <input type="email" class="form-control" name="Payoneer_email" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="Others" style="display:none;">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="Bank_name">Bank Name</label>
+                                        <input type="text" class="form-control" name="Bank_name" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="City">City</label>
+                                        <input type="text" class="form-control" name="City" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="Bank_branch">Branch</label>
+                                        <input type="text" class="form-control" name="Bank_branch" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="Acc_no">Account No</label>
+                                        <input type="text" class="form-control" name="Acc_no" />
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="Iban_no">IBAN no</label>
+                                        <input type="text" class="form-control" name="Iban_no" />
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="row">
+
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <a href="@Url.Action("Index","users")" class="btn btn-sm btn-dark">Back To Index</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+
+    <script>
+    $('#payoption').change(function () {
+        var x = $('#payoption').val();
+        if (x == "Paypal") {
+            $("#Paypal").fadeIn();
+            $("#Payoneer").hide();
+            $('#Others').hide();
+        }
+        else if (x == "Payoneer") {
+
+            $("#Payoneer").fadeIn();
+            $("#Paypal").hide();
+            $('#Others').hide();
+        }
+        else if (x == "Others")
+        {
+            $('#Others').fadeIn();
+            $("#Paypal").hide();
+            $("#Payoneer").hide();
+        }
+        else {
+            $("#Paypal").hide();
+            $("#Payoneer").hide();
+            $('#Others').hide();
+        }
+
+    });
+    </script>
+}

@@ -170,6 +170,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\payment_options.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Revenue.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -327,11 +333,14 @@
     <Content Include="Views\users\admintxtlist.cshtml" />
     <Content Include="Views\users\copyadmintagslist.cshtml" />
     <Content Include="Views\users\domainlist.cshtml" />
+    <Content Include="Views\users\Payment.cshtml" />
+    <Content Include="Views\Home\Abc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\upload\adminupload\adtags\" />
     <Folder Include="Content\upload\adminupload\adtxt\" />
+    <Folder Include="Content\upload\adminupload\Revenue_File\" />
     <Folder Include="Content\upload\adsupload\" />
     <Folder Include="Content\users\" />
   </ItemGroup>

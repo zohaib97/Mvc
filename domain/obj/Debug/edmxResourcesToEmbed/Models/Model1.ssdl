@@ -50,6 +50,29 @@
     <Property Name="domain_user" Type="int" />
     <Property Name="domain_status" Type="varchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="payment_options">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Method" Type="varchar" MaxLength="200" />
+    <Property Name="Paypal_email" Type="varchar" MaxLength="200" />
+    <Property Name="Payoneer_email" Type="varchar" MaxLength="200" />
+    <Property Name="Bank_name" Type="varchar" MaxLength="200" />
+    <Property Name="City" Type="varchar" MaxLength="200" />
+    <Property Name="Bank_branch" Type="varchar" MaxLength="200" />
+    <Property Name="Acc_no" Type="varchar" MaxLength="200" />
+    <Property Name="Iban_no" Type="varchar" MaxLength="200" />
+    <Property Name="Userid" Type="int" />
+  </EntityType>
+  <EntityType Name="Revenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Class" Type="varchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="roles">
     <Key>
       <PropertyRef Name="roleid" />
@@ -157,6 +180,8 @@
     <EntitySet Name="adstxt" EntityType="Self.adstxt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="domain_u" EntityType="Self.domain_u" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payment_options" EntityType="Self.payment_options" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="support" EntityType="Self.support" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />

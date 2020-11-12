@@ -314,54 +314,62 @@ namespace domain.Controllers
         }
 
 
-        //public ActionResult copyadmintagslist()
-        //{
+        public ActionResult Payment()
+        {
 
+            return View();
+        }
 
-        //    return View();
-        //}
+        [HttpPost]
+        public ActionResult Payment(payment_options payment_Options,string Method,string Paypal_email,string Payoneer_email,string Bank_name,string City,string Bank_branch,string Acc_no,string Iban_no)
+        {
+            if(Method == "Others")
+            {
+                payment_Options.Method = Method;
+                payment_Options.Paypal_email = "";
+                payment_Options.Payoneer_email = "";
+                payment_Options.Bank_name = Bank_name;
+                payment_Options.Bank_branch = Bank_branch;
+                payment_Options.City = City;
+                payment_Options.Acc_no = Acc_no;
+                payment_Options.Userid = Convert.ToInt32( Session["userid"]);
+                db.payment_options.Add(payment_Options);
+                db.SaveChanges();
+                return RedirectToAction("Index","users");
+            }
+           else if(Method == "Paypal")
+            {
+                payment_Options.Method = Method;
+                payment_Options.Paypal_email = Paypal_email;
+                payment_Options.Payoneer_email = "";
+                payment_Options.Bank_name = "";
+                payment_Options.Bank_branch = "";
+                payment_Options.City = "";
+                payment_Options.Acc_no = "";
+                payment_Options.Iban_no = "";
+                payment_Options.Userid = Convert.ToInt32(Session["userid"]);
+                db.payment_options.Add(payment_Options);
+                db.SaveChanges();
+                return RedirectToAction("Index", "users");
 
-        //[HttpPost]
-        //public ActionResult copyadmintagslist(HttpPostedFileBase postedFile,csvtag csvtag)
-        //{
-          
-        //    string filePath = string.Empty;
-        //    if (postedFile != null)
-        //    {
-        //        string path = Server.MapPath("~/Content/upload/adminupload/adtags/");
-        //        if (!Directory.Exists(path))
-        //        {
-        //            Directory.CreateDirectory(path);
-        //        }
-
-        //        filePath = path + Path.GetFileName(postedFile.FileName);
-        //        string extension = Path.GetExtension(postedFile.FileName);
-        //        postedFile.SaveAs(filePath);
-
-        //        //Read the contents of CSV file.
-        //        string csvData = System.IO.File.ReadAllText(filePath);
-
-        //        //Execute a loop over the rows.
-        //        foreach (string row in csvData.Split('\n'))
-        //        {
-        //            if (!string.IsNullOrEmpty(row))
-        //            {
-        //                int data = row.Split(',').Length;
-        //                for (var i = 0; i <data ; i++)
-        //                {
-        //                    csvtag.tags = row.Split(',')[i];
-        //                    //csvtag.Name = row.Split(',')[1];
-        //                    //csvtag.Country = row.Split(',')[2];
-        //                    db.csvtags.Add(csvtag);
-        //                    db.SaveChanges();
-        //                }
-                        
-        //            }
-        //        }
-        //    }
-
-        //    return View(csvtag);
-        //}
+            }
+            else
+            {;
+                payment_Options.Method = Method;
+                payment_Options.Payoneer_email = Payoneer_email;
+                payment_Options.Paypal_email = "";
+                payment_Options.Bank_name = "";
+                payment_Options.Bank_branch = "";
+                payment_Options.City = "";
+                payment_Options.Acc_no = "";
+                payment_Options.Iban_no = "";
+                payment_Options.Userid = Convert.ToInt32(Session["userid"]);
+                db.payment_options.Add(payment_Options);
+                db.SaveChanges();
+                return RedirectToAction("Index", "users");
+            }
+            
+        }
     }
 
     }

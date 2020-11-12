@@ -20,6 +20,8 @@
         <EntityTypeShape EntityType="domainModel.customer" Width="1.5" PointX="7.625" PointY="7" />
         <EntityTypeShape EntityType="domainModel.admincsvtag" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="domainModel.usertag" Width="1.5" PointX="8.375" PointY="3.75" />
+        <EntityTypeShape EntityType="domainModel.payment_options" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="domainModel.Revenue" Width="1.5" PointX="8.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

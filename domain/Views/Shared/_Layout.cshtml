@@ -8,6 +8,7 @@
     <meta name="author" content="Creative Tim">
     <title>Domian | @ViewBag.Title</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    
     @*<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />*@
     <!-- Favicon -->
     <link rel="icon" href="~/sitecontent/img/brand/favicon.png" type="image/png">
@@ -105,12 +106,18 @@
                                     <span class="nav-link-text">Ads txt</span>
                                 </a>
                             </li>
-                            @*<li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("copyadmintagslist", "users")">
-                                    <i class="ni ni-tag text-blue"></i>
-                                    <span class="nav-link-text">Ads tags</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Abc", "Home")">
+                                    <i class="ni ni-folder-17 text-red"></i>
+                                    <span class="nav-link-text">ABC</span>
                                 </a>
-                            </li>*@
+                            </li>
+                            @*<li class="nav-item">
+                <a class="nav-link" href="@Url.Action("copyadmintagslist", "users")">
+                    <i class="ni ni-tag text-blue"></i>
+                    <span class="nav-link-text">Ads tags</span>
+                </a>
+            </li>*@
                         }
                         @if (User.IsInRole("User"))
                         {
@@ -150,6 +157,13 @@
                                 <a class="nav-link" href="@Url.Action("admintxtlist", "users")">
                                     <i class="ni ni-folder-17 text-green"></i>
                                     <span class="nav-link-text">Admin txt</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Payment", "users")">
+                                    <i class="ni ni-money-coins text-yellow"></i>
+                                    <span class="nav-link-text">Payment</span>
                                 </a>
                             </li>
 

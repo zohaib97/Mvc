@@ -127,5 +127,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="payment_options">
+      <EntityTypeMapping TypeName="domainModel.payment_options">
+        <MappingFragment StoreEntitySet="payment_options">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Iban_no" ColumnName="Iban_no" />
+          <ScalarProperty Name="Acc_no" ColumnName="Acc_no" />
+          <ScalarProperty Name="Bank_branch" ColumnName="Bank_branch" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Bank_name" ColumnName="Bank_name" />
+          <ScalarProperty Name="Payoneer_email" ColumnName="Payoneer_email" />
+          <ScalarProperty Name="Paypal_email" ColumnName="Paypal_email" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Revenues">
+      <EntityTypeMapping TypeName="domainModel.Revenue">
+        <MappingFragment StoreEntitySet="Revenue">
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

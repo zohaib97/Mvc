@@ -4,7 +4,9 @@
     ViewBag.Title = "Support";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section heads{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
         <div class="header-body">
@@ -22,7 +24,7 @@
 </div>
 <div class="container-fluid mt--6">
     <div class="row">
-
+        
         <div class="col-12 order-xl-1">
             <div class="card">
                 <div class="card-header">
@@ -41,21 +43,31 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="row">
-
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="userpass">User Name</label>
-                                       <input type="text" name="susername" value="@Session["username"]"  class="form-control" readonly/>
-                                    </div>
+                                <div class="col-lg-4"></div>
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-2">
+                                    <a href="https://www.facebook.com/Deevloopers/" class="btn btn-primary"><i class="fa fa-facebook"></i>  Facebook</a>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="userpass">Email</label>
-                                        <input type="text" name="suseremail" value="@Session["useremail"]" class="form-control" readonly/>
-                                    </div>
+                                <div class="col-lg-3">
+                                    <a href="https://web.whatsapp.com/" class="btn btn-success"><i class="fa fa-whatsapp"></i>  Whatsapp</a>
                                 </div>
-
                             </div>
+                            <br />
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="userpass">User Name</label>
+                                            <input type="text" name="susername" value="@Session["username"]" class="form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="userpass">Email</label>
+                                            <input type="text" name="suseremail" value="@Session["useremail"]" class="form-control" readonly />
+                                        </div>
+                                    </div>
+
+                                </div>
                             <div class="row">
 
                                 <div class="col-lg-6">
@@ -75,7 +87,7 @@
 
                             </div>
                             <div class="row">
-                               
+
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-email">Message</label>

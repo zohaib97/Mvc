@@ -108,6 +108,8 @@
     <EntitySet Name="customers" EntityType="domainModel.customer" />
     <EntitySet Name="admincsvtags" EntityType="domainModel.admincsvtag" />
     <EntitySet Name="usertags" EntityType="domainModel.usertag" />
+    <EntitySet Name="payment_options" EntityType="domainModel.payment_options" />
+    <EntitySet Name="Revenues" EntityType="domainModel.Revenue" />
   </EntityContainer>
   <EntityType Name="userprofile">
     <Key>
@@ -181,5 +183,28 @@
     <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="tid" Type="Int32" />
     <Property Name="did" Type="Int32" />
+  </EntityType>
+  <EntityType Name="payment_options">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Method" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Paypal_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Payoneer_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Bank_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Bank_branch" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Acc_no" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Iban_no" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Userid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Revenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Class" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

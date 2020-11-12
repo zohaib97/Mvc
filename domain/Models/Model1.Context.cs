@@ -37,5 +37,7 @@ namespace domain.Models
         public virtual DbSet<customer> customers { get; set; }
         public virtual DbSet<admincsvtag> admincsvtags { get; set; }
         public virtual DbSet<usertag> usertags { get; set; }
+        public virtual DbSet<payment_options> payment_options { get; set; }
+        public virtual DbSet<Revenue> Revenues { get; set; }
     }
 }
